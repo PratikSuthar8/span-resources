@@ -121,7 +121,6 @@ export default function HomePage() {
 									height={160}
 									style={{ height: "8rem", width: "auto" }}
 									loading="eager"
-									loading="eager"
 								/>
 							</div>
 
