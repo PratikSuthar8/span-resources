@@ -1,19 +1,34 @@
 import mongoose from "mongoose"
 
-const MONGODB_URI = process.env.MONGODB_URI!
+const MONGODB_URI =
+  process.env.MONGODB_URI!
 
 if (!MONGODB_URI) {
-  throw new Error("Missing MONGODB_URI")
+  throw new Error(
+    "Please define the MONGODB_URI environment variable"
+  )
 }
 
-let cached = global.mongoose
+declare global {
+  var mongooseCache:
+    | {
+        conn: typeof mongoose | null
+        promise: Promise<
+          typeof mongoose
+        > | null
+      }
+    | undefined
+}
 
-if (!cached) {
-  cached = global.mongoose = {
+const cached =
+  global.mongooseCache ??
+  {
     conn: null,
     promise: null,
   }
-}
+
+global.mongooseCache =
+  cached
 
 export async function connectDB() {
   if (cached.conn) {
@@ -21,19 +36,18 @@ export async function connectDB() {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      dbName: "span-resources",
-    })
+    cached.promise =
+      mongoose.connect(
+        MONGODB_URI,
+        {
+          dbName:
+            "span-resources",
+        }
+      )
   }
 
-  cached.conn = await cached.promise
+  cached.conn =
+    await cached.promise
 
   return cached.conn
-}
-
-declare global {
-  var mongoose: {
-    conn: typeof mongoose | null
-    promise: Promise<typeof mongoose> | null
-  }
 }
