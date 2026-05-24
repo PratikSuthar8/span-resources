@@ -15,44 +15,22 @@ const testimonials = [
 	},
 ];
 
-const clients = [
-	"Manufacturing",
-	"Pharma",
-	"Infrastructure",
-	"Logistics",
-	"Enterprise",
-	"Operations",
-];
-
 export function TestimonialsSection() {
 	return (
-		<section className="relative overflow-hidden py-32">
+		<section className="relative overflow-hidden py-24">
 			<div className="absolute right-[-10%] top-0 h-[500px] w-[500px] rounded-full bg-[#A3E635]/10 blur-3xl" />
 
 			<div className="container-wrapper relative z-10">
-				<div className="mb-20 text-center">
+				<div className="mb-16 max-w-3xl">
 					<p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-[#84CC16]">
-						Trusted By Enterprises
+						Client Testimonials
 					</p>
 
 					<h2 className="text-4xl font-black tracking-[-0.04em] text-[#0B132B] md:text-5xl">
-						Trusted Workforce Partner
+						Trusted By Enterprise
 						<br />
-						Across Gujarat
+						Teams Across Gujarat
 					</h2>
-				</div>
-
-				<div className="relative mb-20 overflow-hidden">
-					<div className="flex gap-6 whitespace-nowrap">
-						{[...clients, ...clients].map((client, index) => (
-							<div
-								key={index}
-								className="rounded-full border border-neutral-200 bg-white/80 px-8 py-4 text-sm font-semibold text-[#0B132B] shadow-sm backdrop-blur-xl"
-							>
-								{client}
-							</div>
-						))}
-					</div>
 				</div>
 
 				<div className="grid gap-6 lg:grid-cols-2">
