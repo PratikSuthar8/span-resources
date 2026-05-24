@@ -66,7 +66,6 @@ export function IndustriesSection() {
                     className="parallax-layer object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     loading={industry.title === "Manufacturing" ? "eager" : "lazy"}
-                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
